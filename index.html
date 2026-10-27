@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GestIglesia organiza miembros, finanzas, grupos, eventos y documentos de tu iglesia en un sistema fácil de usar desde computadora y celular.">
+  <meta name="theme-color" content="#172844">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_DO">
+  <meta property="og:title" content="GestIglesia — Tu iglesia, organizada en un solo lugar">
+  <meta property="og:description" content="Administra miembros, finanzas, grupos y documentos con una plataforma creada para iglesias locales.">
+  <meta property="og:url" content="https://www.gestiglesia.com/">
+  <meta property="og:image" content="https://www.gestiglesia.com/assets/og-logo.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:alt" content="GestIglesia — Tu iglesia, organizada en un solo lugar">
+  <link rel="canonical" href="https://www.gestiglesia.com/">
+  <title>GestIglesia — Sistema administrativo para iglesias</title>
+  <style>
+    :root{--navy:#172844;--navy2:#223a60;--gold:#b8872c;--gold2:#f1d38a;--green:#285b3a;--paper:#fbf8f1;--card:#fff;--soft:#f2eee4;--line:#e5dece;--text:#20283a;--muted:#5c6577;--radius:18px;--shadow:0 24px 70px -30px rgba(23,40,68,.35)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:84px}
+    body{margin:0;background:var(--paper);color:var(--text);font:16px/1.6 "Segoe UI",system-ui,-apple-system,sans-serif;overflow-x:hidden}
+    img{display:block;max-width:100%}
+    a{color:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    .wrap{width:min(1120px,100%);margin:auto;padding-inline:24px}
+    .skip{position:absolute;left:-999px;top:8px;background:#fff;padding:10px;z-index:100}
+    .skip:focus{left:8px}
+    h1,h2,h3{margin:0;color:var(--navy);font-family:Georgia,"Times New Roman",serif;line-height:1.14;text-wrap:balance}
+    p{color:var(--muted)}
+    .eyebrow{display:inline-block;max-width:100%;color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;overflow-wrap:anywhere}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border:1px solid transparent;border-radius:12px;font-weight:750;text-decoration:none;transition:.2s ease}
+    .btn:hover{transform:translateY(-1px)}
+    .btn:focus-visible,summary:focus-visible{outline:3px solid var(--gold2);outline-offset:3px}
+    .btn-primary{background:var(--navy);color:#fff}.btn-primary:hover{background:var(--navy2)}
+    .btn-wa{background:var(--green);color:#fff}.btn-wa:hover{background:#1f492e}
+    .btn-ghost{border-color:var(--line);background:rgba(255,255,255,.35);color:var(--navy)}
+    .btn-planes{background:var(--gold);color:#fff}.btn-planes:hover{background:#9c6f22}
+    nav{position:sticky;top:0;z-index:30;border-bottom:1px solid var(--line);background:rgba(251,248,241,.92);backdrop-filter:blur(12px)}
+    nav .row{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:10px;color:var(--navy);font-weight:800;text-decoration:none;white-space:nowrap}
+    .mark{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--navy);color:var(--gold2);font:700 18px Georgia,serif}
+    .nav-links{display:flex;align-items:center;gap:22px}.nav-links>a:not(.btn){font-size:14px;text-decoration:none;color:var(--muted)}
+    .hero{padding:84px 0 72px}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:58px;align-items:center}
+    .hero-copy,.hero-visual{min-width:0}
+    .hero h1{font-size:clamp(40px,5vw,62px);margin:14px 0 20px;letter-spacing:-.025em}
+    .hero h1 em{color:var(--gold);font-style:normal}
+    .lead{max-width:600px;margin:0 0 28px;font-size:18px}
+    .hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
+    .trust{display:flex;flex-wrap:wrap;gap:10px 20px;margin:22px 0 0;padding:0;list-style:none;color:var(--muted);font-size:13px}
+    .trust li::before{content:"✓";margin-right:7px;color:var(--green);font-weight:900}
+    .window{padding:10px;border:1px solid var(--line);border-radius:22px;background:var(--card);box-shadow:var(--shadow);transform:rotate(1deg);overflow:hidden}
+    .window .real-panel{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:left top;border-radius:13px}
+    .window-top{display:flex;gap:6px;padding:3px 4px 13px}.window-top i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+    .dashboard{display:grid;grid-template-columns:78px minmax(0,1fr);gap:12px;min-height:330px}
+    .side{padding:14px 9px;border-radius:13px;background:var(--navy)}.side i{display:block;height:9px;margin:0 0 13px;border-radius:5px;background:rgba(255,255,255,.18)}.side i:first-child{background:var(--gold2)}
+    .dash-main{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kpi,.fake-list{padding:15px;border:1px solid var(--line);border-radius:13px;background:var(--soft)}
+    .kpi span{display:block;color:var(--muted);font-size:10px;font-weight:800;text-transform:uppercase}.kpi strong{color:var(--navy);font-size:22px}.fake-list{grid-column:1/-1}.fake-list i{display:block;width:85%;height:9px;margin:12px 0;border-radius:6px;background:#ddd5c5}.fake-list i:nth-child(2){width:64%}.fake-list i:nth-child(3){width:76%}
+    .visual-note{text-align:center;margin:12px 0 0;font-size:12px;color:var(--muted)}
+    .benefit-strip{border-block:1px solid var(--line);background:#f3eee3}
+    .benefits{display:grid;grid-template-columns:repeat(3,1fr)}
+    .benefit{padding:30px 26px;border-right:1px solid var(--line)}.benefit:last-child{border:0}.benefit strong{display:block;color:var(--navy);font-size:16px}.benefit span{color:var(--muted);font-size:14px}
+    .section{padding:78px 0}.section.alt{background:#f4f0e7}
+    .head{max-width:700px;margin:0 auto 42px;text-align:center}.head h2{margin:9px 0 13px;font-size:clamp(30px,4vw,42px)}.head p{margin:0}
+    .personas,.features,.steps,.assurances{display:grid;gap:18px}.personas{grid-template-columns:repeat(3,1fr)}
+    .card{padding:27px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}.card .icon{display:grid;place-items:center;width:46px;height:46px;margin-bottom:16px;border-radius:13px;background:#edf2fa;font-size:22px}.tag{color:var(--gold);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.card h3{margin:5px 0 8px;font-size:20px}.card p{margin:0;font-size:14px}
+    .product-showcase{padding:13px;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.72);box-shadow:var(--shadow)}
+    .showcase-main{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(250px,.45fr);min-height:440px;overflow:hidden;border:1px solid var(--line);border-radius:17px;background:#fff}
+    .module-window{position:relative;min-width:0;padding:38px 10px 10px;background:linear-gradient(145deg,#f9f6ef,#eee7d9);overflow:hidden}.module-window::before{content:"";position:absolute;inset:0 0 auto;height:30px;border-bottom:1px solid var(--line);background:#fff}.module-window::after{content:"●  ●  ●";position:absolute;top:5px;left:13px;color:#d9cdb9;font-size:12px;letter-spacing:2px}.module-window button{display:block;width:100%;height:100%;padding:0;border:0;border-radius:10px;background:#f7f4ed;cursor:zoom-in;overflow:hidden}.module-window img{width:100%;height:100%;object-fit:cover;object-position:left top;transition:opacity .18s ease,transform .35s ease}.module-window button:hover img{transform:scale(1.012)}
+    .showcase-copy{display:flex;flex-direction:column;justify-content:center;padding:35px;background:var(--navy);color:#fff}.showcase-kicker{color:var(--gold2);font-size:11px;font-weight:850;letter-spacing:.11em;text-transform:uppercase}.showcase-copy h3{margin:8px 0 12px;color:#fff;font-size:29px}.showcase-copy p{margin:0;color:rgba(255,255,255,.72);font-size:14px}.showcase-copy small{display:block;margin-top:22px;color:rgba(255,255,255,.5)}
+    .module-tabs{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;margin-top:12px}.module-tab{min-width:0;padding:12px 8px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--muted);font:700 12px/1.25 inherit;cursor:pointer;transition:.2s ease}.module-tab:hover{border-color:#c9b88f;color:var(--navy);transform:translateY(-2px)}.module-tab[aria-selected="true"]{border-color:var(--gold);background:#fff8e8;color:var(--navy);box-shadow:0 7px 18px -14px rgba(23,40,68,.7)}.module-tab:focus-visible,.module-window button:focus-visible,.image-modal button:focus-visible{outline:3px solid var(--gold2);outline-offset:3px}
+    .video-feature{display:grid;grid-template-columns:minmax(0,.78fr) minmax(320px,1.22fr);gap:44px;align-items:center}.video-copy h2{margin:9px 0 15px;font-size:clamp(30px,4vw,42px)}.video-copy p{margin:0 0 23px}.video-points{display:grid;gap:10px;margin:0 0 26px;padding:0;list-style:none;color:var(--muted)}.video-points li{display:flex;gap:10px}.video-points li::before{content:"\2713";color:var(--green);font-weight:900}.video-frame{position:relative;padding:10px;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:var(--shadow);overflow:hidden}.video-frame video{display:block;width:100%;aspect-ratio:1/1;border-radius:16px;background:var(--navy);object-fit:cover}.video-note{margin:10px 5px 0;text-align:center;color:var(--muted);font-size:12px}
+    .image-modal{width:min(1400px,94vw);max-height:92vh;padding:10px;border:0;border-radius:18px;background:#fff;box-shadow:0 35px 100px rgba(0,0,0,.45)}.image-modal::backdrop{background:rgba(11,22,38,.78);backdrop-filter:blur(5px)}.image-modal img{width:100%;max-height:84vh;object-fit:contain;border-radius:11px}.modal-close{position:absolute;top:18px;right:18px;display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.45);border-radius:50%;background:rgba(23,40,68,.9);color:#fff;font-size:22px;cursor:pointer}
+    .features{grid-template-columns:repeat(3,1fr)}.feature{padding:21px;border:1px solid var(--line);border-radius:15px;background:var(--card)}.feature b{display:block;margin-bottom:5px;color:var(--navy)}.feature p{margin:0;font-size:13px}.feature .fi{font-size:21px;margin-bottom:9px}
+    .compare{padding:52px;border-radius:24px;background:var(--navy);color:#fff}.compare h2{margin:10px 0 8px;color:#fff;font-size:clamp(29px,4vw,40px)}.compare>p{margin-top:0;color:rgba(255,255,255,.72)}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:28px}.compare-item{display:flex;gap:12px;padding:18px;border:1px solid rgba(255,255,255,.13);border-radius:14px;background:rgba(255,255,255,.06)}.compare-item>span{color:var(--gold2);font-weight:900}.compare-item strong{display:block}.compare-item small{display:block;color:rgba(255,255,255,.7);line-height:1.5}
+    .assurances{grid-template-columns:repeat(4,1fr)}.assurance{text-align:center;padding:22px 15px}.assurance span{font-size:25px}.assurance strong{display:block;margin:7px 0 3px;color:var(--navy)}.assurance small{color:var(--muted)}
+    .steps{grid-template-columns:repeat(3,1fr)}.step{padding:26px;border-top:3px solid var(--gold);background:var(--card);border-radius:0 0 15px 15px}.step .num{color:var(--gold);font:700 36px Georgia,serif}.step h3{margin:8px 0;font-size:20px}.step p{margin:0;font-size:14px}
+    .commercial{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}.commercial>div{padding:31px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}.commercial h3{font-size:25px}.commercial ul{padding-left:20px;color:var(--muted)}.commercial li{margin:8px 0}.commercial .notice{border-color:#dbc99f;background:#fffaf0}
+    .faq{max-width:820px;margin:auto}.faq details{border-bottom:1px solid var(--line);background:var(--card)}.faq details:first-child{border-radius:16px 16px 0 0}.faq details:last-child{border:0;border-radius:0 0 16px 16px}.faq summary{padding:21px 24px;color:var(--navy);font-weight:750;cursor:pointer}.faq p{margin:0;padding:0 24px 22px}
+    .cta{padding:72px 0;text-align:center;background:var(--navy)}.cta h2{max-width:750px;margin:10px auto 14px;color:#fff;font-size:clamp(31px,4vw,44px)}.cta p{max-width:610px;margin:0 auto 28px;color:rgba(255,255,255,.75)}.cta .eyebrow{color:var(--gold2)}
+    footer{padding:32px 0;border-top:1px solid var(--line)}footer .row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.legal{display:flex;gap:17px;color:var(--muted);font-size:13px}.legal a{text-underline-offset:3px}
+    .mobile-cta{display:none}
+    .reveal{opacity:0;transform:translateY(20px);transition:.65s ease}.reveal.visible{opacity:1;transform:none}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+    @media(max-width:900px){.hero-grid,.video-feature{grid-template-columns:1fr}.hero{padding-top:60px}.hero-visual{max-width:650px}.video-copy{max-width:680px}.video-frame{width:min(680px,100%)}.showcase-main{grid-template-columns:1fr;min-height:0}.module-window{height:420px}.showcase-copy{padding:28px}.module-tabs{grid-template-columns:repeat(4,1fr)}.personas,.assurances{grid-template-columns:1fr 1fr}.features{grid-template-columns:1fr 1fr}.nav-links>a:not(.btn){display:none}}
+    @media(max-width:680px){.wrap{padding-inline:18px}.section{padding:60px 0}.hero{padding:48px 0 56px}.hero h1{font-size:clamp(35px,10.4vw,46px);overflow-wrap:anywhere}.lead{font-size:16.5px}.hero-ctas{display:grid}.hero-ctas .btn{width:100%}.nav-links .btn{padding:10px 13px;min-height:42px;font-size:13px}.brand{font-size:15px}.benefits,.personas,.features,.compare-grid,.steps,.commercial,.assurances{grid-template-columns:1fr}.benefit{padding:22px 0;border-right:0;border-bottom:1px solid var(--line)}.benefit:last-child{border:0}.window{transform:none}.dashboard{grid-template-columns:55px minmax(0,1fr);min-height:275px}.dash-main{gap:7px}.kpi,.fake-list{padding:10px}.compare{padding:34px 22px}.product-showcase{padding:8px}.module-window{height:285px;padding:36px 7px 7px}.showcase-copy h3{font-size:25px}.module-tabs{grid-template-columns:repeat(2,1fr);gap:7px}.module-tab{padding:11px 7px}.mobile-cta{position:fixed;z-index:40;left:12px;right:12px;bottom:12px;display:flex;box-shadow:0 10px 30px rgba(0,0,0,.25)}.mobile-cta .btn{width:100%}body{padding-bottom:72px}.legal{width:100%;flex-wrap:wrap}}
+    @media(max-width:560px){.nav-links{display:none}}
+    @media(max-width:390px){.hero h1{font-size:34px}.trust{display:grid}.dashboard{grid-template-columns:45px minmax(0,1fr)}.kpi strong{font-size:18px}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <nav aria-label="Navegación principal">
+    <div class="wrap row">
+      <a class="brand" href="#inicio" aria-label="GestIglesia, inicio"><span class="mark">G</span> GestIglesia</a>
+      <div class="nav-links">
+        <a href="#funciones">Funciones</a><a href="#como-funciona">Cómo funciona</a><a href="#preguntas">Preguntas</a>
+        <a class="btn btn-planes" data-cta="nav-planes" href="https://gestiglesia.com/planes/index.html" target="_blank" rel="noopener">Ver planes</a>
+        <a class="btn btn-primary" data-cta="header" href="https://wa.me/18094424720?text=Hola%2C%20quiero%20conocer%20GestIglesia" target="_blank" rel="noopener">Solicitar demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="contenido">
+    <header class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Sistema administrativo para iglesias locales</span>
+          <h1>Tu iglesia, <em>organizada y conectada</em> en un solo lugar.</h1>
+          <p class="lead">GestIglesia reúne miembros, finanzas, grupos, eventos y documentos en una plataforma sencilla, creada para la forma en que realmente trabaja tu iglesia.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-wa" data-cta="hero" href="https://wa.me/18094424720?text=Hola%2C%20quiero%20agendar%20una%20demo%20de%20GestIglesia" target="_blank" rel="noopener">💬 Agendar una demo</a>
+            <a class="btn btn-planes" data-cta="hero-planes" href="https://gestiglesia.com/planes/index.html" target="_blank" rel="noopener">💳 Ver planes y precios</a>
+            <a class="btn btn-ghost" href="#funciones">Conocer las funciones ↓</a>
+          </div>
+          <ul class="trust" aria-label="Ventajas principales"><li>Funciona en computadora y celular</li><li>Instalación personalizada</li><li>Capacitación incluida</li></ul>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="window">
+            <img class="real-panel" src="assets/panel-general-demo.png" alt="Panel general real de GestIglesia con indicadores, agenda y datos ficticios de demostración" width="1594" height="826">
+          </div>
+          <p class="visual-note">Vista real del sistema · datos de demostración</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="benefit-strip" aria-label="Resultados de GestIglesia"><div class="wrap benefits"><div class="benefit"><strong>Información centralizada</strong><span>La directiva trabaja con una misma fuente de información.</span></div><div class="benefit"><strong>Procesos más ágiles</strong><span>Encuentra datos y genera documentos en menos pasos.</span></div><div class="benefit"><strong>Acceso según cada función</strong><span>Cada persona utiliza únicamente lo que necesita.</span></div></div></section>
+
+    <section class="section" id="para-quien"><div class="wrap"><div class="head reveal"><span class="eyebrow">Pensado para tu equipo</span><h2>Una plataforma, distintas formas de servir</h2><p>Cada usuario tiene una experiencia clara y acceso acorde con sus responsabilidades.</p></div><div class="personas">
+      <article class="card"><div class="icon">🧑‍💼</div><span class="tag">Pastor</span><h3>Una visión completa</h3><p>Consulta membresía, finanzas y actividades desde un panel que facilita la toma de decisiones.</p></article>
+      <article class="card"><div class="icon">🗂️</div><span class="tag">Secretaría y tesorería</span><h3>Trabajo ordenado y eficiente</h3><p>Administra registros, aportes y documentos sin reconstruir la información cada vez.</p></article>
+      <article class="card"><div class="icon">📱</div><span class="tag">Líder de grupo</span><h3>Las herramientas necesarias</h3><p>Registra asistencia y consulta la información de su grupo desde el celular, con acceso limitado.</p></article>
+    </div></div></section>
+
+    <section class="section alt" id="producto"><div class="wrap"><div class="head reveal"><span class="eyebrow">Conoce el producto</span><h2>Así se ve una iglesia mejor organizada</h2><p>Explora vistas reales de GestIglesia utilizando información ficticia preparada para la demostración.</p></div>
+      <div class="product-showcase reveal">
+        <div class="showcase-main">
+          <div class="module-window"><button type="button" id="open-module-image" aria-label="Ampliar captura del Panel general"><img id="module-image" src="assets/panel-general-demo.png" alt="Panel general de GestIglesia con indicadores y agenda semanal" loading="lazy"></button></div>
+          <div class="showcase-copy" aria-live="polite"><span class="showcase-kicker">Vista real del sistema</span><h3 id="module-title">Panel general</h3><p id="module-description">Consulta miembros activos, grupos, próximos eventos y el balance general desde una sola vista.</p><small>Selecciona otro módulo para conocerlo.</small></div>
+        </div>
+        <div class="module-tabs" role="tablist" aria-label="Módulos de GestIglesia">
+          <button class="module-tab" type="button" role="tab" aria-selected="true" data-image="assets/panel-general-demo.png" data-title="Panel general" data-alt="Panel general de GestIglesia con indicadores y agenda semanal" data-description="Consulta miembros activos, grupos, próximos eventos y el balance general desde una sola vista.">Panel general</button>
+          <button class="module-tab" type="button" role="tab" aria-selected="false" data-image="assets/membresia.png" data-title="Membresía organizada" data-alt="Listado de miembros en GestIglesia con filtros por grupo y estado" data-description="Encuentra rápidamente a cada persona, filtra por grupo y mantén sus datos familiares en orden.">Membresía</button>
+          <button class="module-tab" type="button" role="tab" aria-selected="false" data-image="assets/finanzas.png" data-title="Finanzas claras" data-alt="Resumen financiero de GestIglesia con ingresos, gastos y balances" data-description="Visualiza ingresos, gastos y balances por departamento para tomar decisiones con información centralizada.">Finanzas</button>
+          <button class="module-tab" type="button" role="tab" aria-selected="false" data-image="assets/eventos.png" data-title="Eventos coordinados" data-alt="Calendario de eventos de GestIglesia con fechas, lugares e inscritos" data-description="Programa cultos, reuniones y actividades, controla su frecuencia y consulta las inscripciones.">Eventos</button>
+          <button class="module-tab" type="button" role="tab" aria-selected="false" data-image="assets/grupos-ministerios.png" data-title="Grupos y ministerios" data-alt="Grupos y ministerios registrados en GestIglesia" data-description="Identifica responsables, guías e integrantes de cada ministerio sin perder de vista su estructura.">Grupos</button>
+          <button class="module-tab" type="button" role="tab" aria-selected="false" data-image="assets/proyectos.png" data-title="Proyectos bajo control" data-alt="Proyectos de la iglesia con presupuesto y progreso en GestIglesia" data-description="Da seguimiento a presupuestos, responsables y avance de las iniciativas de la congregación.">Proyectos</button>
+          <button class="module-tab" type="button" role="tab" aria-selected="false" data-image="assets/directiva.png" data-title="Directiva definida" data-alt="Directiva de la iglesia organizada por cargos en GestIglesia" data-description="Mantén visible la estructura oficial de la iglesia y las personas responsables de cada cargo.">Directiva</button>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="section alt" id="funciones"><div class="wrap"><div class="head reveal"><span class="eyebrow">Todo en un solo lugar</span><h2>Las herramientas que tu iglesia usa cada semana</h2><p>Desde el registro de miembros hasta los eventos y documentos oficiales.</p></div><div class="features">
+      <article class="feature"><div class="fi">👥</div><b>Membresía</b><p>Fichas, fotos, familiares, búsqueda e historial.</p></article><article class="feature"><div class="fi">🏅</div><b>Directiva</b><p>Cargos, ministros y estructura oficial de la iglesia.</p></article><article class="feature"><div class="fi">🧩</div><b>Grupos y ministerios</b><p>Comités, integrantes y acceso para líderes.</p></article><article class="feature"><div class="fi">💰</div><b>Finanzas</b><p>Registro organizado de diezmos, promesas y ofrendas.</p></article><article class="feature"><div class="fi">✅</div><b>Asistencia</b><p>Informes mensuales, convertidos y bautizados.</p></article><article class="feature"><div class="fi">📅</div><b>Eventos</b><p>Programación, participantes, capacidad e inscripción.</p></article><article class="feature"><div class="fi">💍</div><b>Eventos de vida</b><p>Bodas y presentaciones con su historial completo.</p></article><article class="feature"><div class="fi">📜</div><b>Certificados y cartas</b><p>Documentos preparados para imprimir en pocos pasos.</p></article><article class="feature"><div class="fi">📊</div><b>Proyectos</b><p>Presupuesto y gastos de iniciativas de la iglesia.</p></article>
+    </div></div></section>
+
+    <section class="section"><div class="wrap"><div class="compare reveal"><span class="eyebrow">Creado para iglesias locales</span><h2>La tecnología se adapta a tu iglesia</h2><p>No necesitas cambiar la manera en que funciona tu congregación para comenzar a organizarla.</p><div class="compare-grid"><div class="compare-item"><span>✓</span><div><strong>Modelo de licencia claro</strong><small>Sin una mensualidad permanente por el uso del sistema.</small></div></div><div class="compare-item"><span>✓</span><div><strong>Acceso para líderes</strong><small>Cada líder trabaja con su grupo sin entrar a áreas que no le corresponden.</small></div></div><div class="compare-item"><span>✓</span><div><strong>Finanzas según tu realidad</strong><small>Diezmos, promesas de fe y ofrendas se registran de forma diferenciada.</small></div></div><div class="compare-item"><span>✓</span><div><strong>Uso desde el celular</strong><small>Los procesos principales están disponibles donde el equipo los necesita.</small></div></div></div></div></div></section>
+
+    <section class="section alt" aria-labelledby="confianza"><div class="wrap"><div class="head"><span class="eyebrow">Acompañamiento</span><h2 id="confianza">No solo recibes un sistema</h2><p>La implementación incluye el acompañamiento necesario para que el equipo pueda comenzar.</p></div><div class="assurances"><div class="assurance"><span>🎨</span><strong>Personalización</strong><small>Logo e información de tu iglesia.</small></div><div class="assurance"><span>🎓</span><strong>Capacitación</strong><small>Orientación inicial para los responsables.</small></div><div class="assurance"><span>🔐</span><strong>Accesos por función</strong><small>Permisos acordes con cada usuario.</small></div><div class="assurance"><span>🤝</span><strong>Soporte</strong><small>Acompañamiento según el plan acordado.</small></div></div></div></section>
+
+    <section class="section" id="como-funciona"><div class="wrap"><div class="head reveal"><span class="eyebrow">Cómo comenzar</span><h2>De conocerlo a utilizarlo, paso a paso</h2></div><div class="steps"><article class="step"><div class="num">01</div><h3>Demostración personalizada</h3><p>Conoces los módulos utilizando datos ficticios similares a la realidad de tu iglesia.</p></article><article class="step"><div class="num">02</div><h3>Configuración y capacitación</h3><p>Preparamos la instalación, personalizamos el sistema y orientamos a los responsables.</p></article><article class="step"><div class="num">03</div><h3>Puesta en marcha</h3><p>Tu equipo comienza a trabajar con acompañamiento durante la adopción inicial.</p></article></div></div></section>
+
+    <section class="section alt" id="licencia"><div class="wrap"><div class="head"><span class="eyebrow">Modelo comercial</span><h2>Una inversión clara para tu iglesia</h2><p>Sin presentar como iguales el costo de la licencia y los servicios de soporte.</p><a class="btn btn-planes" data-cta="licencia-planes" href="https://gestiglesia.com/planes/index.html" target="_blank" rel="noopener" style="margin-top:18px">Ver planes y precios completos</a></div><div class="commercial"><div><h3>Licencia del sistema</h3><ul><li>Pago único por la licencia acordada.</li><li>Instalación y personalización inicial.</li><li>Capacitación para los responsables.</li><li>Alcance definido antes de comenzar.</li></ul></div><div class="notice"><h3>Soporte y mantenimiento</h3><p>Las actualizaciones, el soporte continuo y cualquier mantenimiento anual se cotizan y explican por separado. Durante la demostración recibirás el alcance y el precio correspondientes a tu iglesia.</p><a class="btn btn-ghost" data-cta="pricing" href="https://wa.me/18094424720?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20licencia%20y%20el%20mantenimiento%20de%20GestIglesia" target="_blank" rel="noopener">Consultar inversión</a></div></div></div></section>
+
+    <section class="section" id="preguntas"><div class="wrap"><div class="head"><span class="eyebrow">Preguntas frecuentes</span><h2>Lo que necesitas saber antes de comenzar</h2></div><div class="faq">
+      <details><summary>¿Necesito conocimientos técnicos para utilizar GestIglesia?</summary><p>No. La interfaz está pensada para el trabajo cotidiano de pastores, secretarios, tesoreros y líderes. La implementación incluye capacitación inicial.</p></details>
+      <details><summary>¿Funciona desde el celular?</summary><p>Sí. Las funciones principales pueden utilizarse desde un navegador en computadora, tableta o celular.</p></details>
+      <details><summary>¿Cada persona puede ver toda la información?</summary><p>No. El sistema permite asignar accesos de acuerdo con la función de cada usuario.</p></details>
+      <details><summary>¿La demostración utiliza información real de nuestra iglesia?</summary><p>Para proteger la privacidad, la demostración puede prepararse con datos ficticios representativos. No es necesario compartir información sensible para conocer el sistema.</p></details>
+      <details><summary>¿Hay una mensualidad por utilizar el sistema?</summary><p>La licencia se plantea como un pago único. Los servicios continuos, como soporte o mantenimiento anual, se presentan por separado y se acuerdan antes de contratar.</p></details>
+      <details><summary>¿Pueden ayudarnos a organizar la información que ya tenemos?</summary><p>Durante la evaluación inicial se revisa el formato de la información existente y se define qué apoyo de preparación o migración puede ofrecerse.</p></details>
+    </div></div></section>
+
+    <section class="cta" id="contacto"><div class="wrap"><span class="eyebrow">Conoce GestIglesia</span><h2>Descubre cómo se vería tu iglesia mejor organizada</h2><p>Agenda una demostración breve y conoce el sistema con ejemplos claros, sin necesidad de compartir información sensible.</p><div class="hero-ctas" style="justify-content:center"><a class="btn btn-wa" data-cta="final" href="https://wa.me/18094424720?text=Hola%2C%20quiero%20agendar%20una%20demo%20de%20GestIglesia" target="_blank" rel="noopener">💬 Agendar por WhatsApp</a><a class="btn btn-planes" data-cta="final-planes" href="https://gestiglesia.com/planes/index.html" target="_blank" rel="noopener">Ver planes primero</a></div></div></section>
+  </main>
+
+  <footer><div class="wrap row"><a class="brand" href="#inicio"><span class="mark">G</span> GestIglesia</a><div class="legal"><span>© <span id="year"></span> GestIglesia</span><a href="#" aria-label="Política de privacidad pendiente de publicar">Privacidad</a><a href="#" aria-label="Términos pendientes de publicar">Términos</a></div></div></footer>
+  <div class="mobile-cta"><a class="btn btn-wa" data-cta="mobile-fixed" href="https://wa.me/18094424720?text=Hola%2C%20quiero%20agendar%20una%20demo%20de%20GestIglesia" target="_blank" rel="noopener">💬 Agendar una demo</a></div>
+  <dialog class="image-modal" id="image-modal" aria-label="Captura ampliada de GestIglesia"><button class="modal-close" type="button" aria-label="Cerrar imagen">×</button><img id="modal-image" src="assets/panel-general-demo.png" alt=""></dialog>
+  <script>
+    document.getElementById('year').textContent=new Date().getFullYear();
+    (function(){var els=document.querySelectorAll('.reveal');function showAll(){els.forEach(function(e){e.classList.add('visible')})}if(!('IntersectionObserver'in window)){showAll();return}var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});els.forEach(function(e){io.observe(e)});window.setTimeout(showAll,1500)})();
+    document.querySelectorAll('[data-cta]').forEach(function(link){link.addEventListener('click',function(){var name=this.getAttribute('data-cta');window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',cta_location:name})})});
+    (function(){
+      var tabs=Array.from(document.querySelectorAll('.module-tab')),image=document.getElementById('module-image'),title=document.getElementById('module-title'),description=document.getElementById('module-description'),openButton=document.getElementById('open-module-image'),modal=document.getElementById('image-modal'),modalImage=document.getElementById('modal-image'),closeButton=modal.querySelector('.modal-close');
+      function selectTab(tab){tabs.forEach(function(item){item.setAttribute('aria-selected',item===tab?'true':'false')});image.style.opacity='0';window.setTimeout(function(){image.src=tab.dataset.image;image.alt=tab.dataset.alt;title.textContent=tab.dataset.title;description.textContent=tab.dataset.description;openButton.setAttribute('aria-label','Ampliar captura de '+tab.dataset.title);image.onload=function(){image.style.opacity='1'};if(image.complete){image.style.opacity='1'}},120)}
+      tabs.forEach(function(tab,index){tab.addEventListener('click',function(){selectTab(tab)});tab.addEventListener('keydown',function(event){if(event.key!=='ArrowRight'&&event.key!=='ArrowLeft')return;event.preventDefault();var next=event.key==='ArrowRight'?(index+1)%tabs.length:(index-1+tabs.length)%tabs.length;tabs[next].focus();selectTab(tabs[next])})});
+      openButton.addEventListener('click',function(){modalImage.src=image.src;modalImage.alt=image.alt;if(typeof modal.showModal==='function'){modal.showModal()}});closeButton.addEventListener('click',function(){modal.close()});modal.addEventListener('click',function(event){if(event.target===modal){modal.close()}});
+    })();
+  </script>
+</body>
+</html>
